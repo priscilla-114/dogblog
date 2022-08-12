@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/priscilla-114/dogblog#readme",
   "dependencies": {
+    "handlebars": "^4.7.7",
     "sequelize": "^6.21.3"
   }
 }
