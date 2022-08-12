@@ -1,0 +1,20 @@
+{
+  "name": "dogblog",
+  "version": "1.0.0",
+  "description": "A Blog from the pov of your Dog!",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/priscilla-114/dogblog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/priscilla-114/dogblog/issues"
+  },
+  "homepage": "https://github.com/priscilla-114/dogblog#readme"
+}
