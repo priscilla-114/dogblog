@@ -1,20 +1,25 @@
 {
-  "name": "dogblog",
+  "name": "the-dog-blog",
   "version": "1.0.0",
-  "description": "A Blog from the pov of your Dog!",
+  "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/priscilla-114/dogblog.git"
+    "url": "git+https://github.com/asaelens02/The-dog-blog.git"
   },
-  "author": "",
+  "author": "asaelens",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/priscilla-114/dogblog/issues"
+    "url": "https://github.com/asaelens02/The-dog-blog/issues"
   },
-  "homepage": "https://github.com/priscilla-114/dogblog#readme"
+  "homepage": "https://github.com/asaelens02/The-dog-blog#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.21.3"
+  }
 }
