@@ -34,13 +34,26 @@ Likes.belongsTo(Users, {
     onDelete: 'cascade',
 });
 
-//C
+//POST RELATIONSHIPS
+//Creating a one to many relationship with posts and likes
 Post.hasMany(Likes, {
     foreignKey: 'post_id',
     onDelete: 'cascade',
 });
-
+//creating a one to one relationship between likes and posts
 Likes.belongsTo(Post, {
     foreignKey: 'post_id',
     onDelete: 'cascade',
 });
+//creating a one to many relationship with Post and commments
+Post.hasMany(Comments, {
+    foreignKey: 'post_id',
+    onDelete: 'cascade',
+});
+//creating a one to one relationship with Comments belonging to a post
+Comments.belongsTo(Post, {
+    foreignKey: 'post_id',
+    onDelete: 'cascade',
+});
+
+module.exports = { Users, Post, Comments, Likes };
