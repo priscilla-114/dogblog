@@ -2,6 +2,7 @@
 const router = require("express").Router();
 const { Comments, Users } = require("../../model");
 
+//get request to find all comments
 router.get("/", (req, res) => {
     Comment.findAll({
         include: {
@@ -15,6 +16,7 @@ router.get("/", (req, res) => {
     });
 });
 
+//post route to create a comment
 router.post("/", (req, res) => {
     if (req.session) {
         Comment.create({
@@ -29,6 +31,7 @@ router.post("/", (req, res) => {
     }
 });
 
+//route used to delete a comment
 router.delete("/:id", (req, res) => {
     Comment.destroy({
         where: {
@@ -46,6 +49,7 @@ router.delete("/:id", (req, res) => {
     });
 });
 
+//exporting the file
 module.exports= router;
 
 
