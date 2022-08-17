@@ -46,6 +46,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
+//route to allow user to create post
 router.post("/", (req, res) => {
     Users.create({
         username: req.body.username,
@@ -93,3 +94,32 @@ router.post("/login", (req, res) => {
     });
 });
 
+//Logout route
+router.post("/logout", (req, res) => {
+    if (req.session.loggedIn) {
+        req.session.destroy(() => {
+            res.status(204).end();
+        });
+    } else {
+        res.status(404).end();
+    }
+});
+
+//Delete User
+router.delete("/:id", (req, res) => {
+    Users.destroy({
+        where: {
+            id: req.params.id;
+        },
+    }).then((userInfo) => {
+        if (!userInfo) {
+            res.status(404).json({ message: "No user found matching this id" });
+        }
+        res.json(userInfo);
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
+module.exports = router;
