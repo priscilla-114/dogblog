@@ -54,3 +54,41 @@ router.get("/:id", (req, res) => {
     });
 });
 
+//Route for creating a post
+router.post("/", (req, res) => {
+    Post.create({
+        title: req.body.title,
+        content: req.body.content,
+        user_id: req.session.user_id,
+    }).then((dbPostData) => res.json(dbPostData))
+    .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
+//route to Update a post
+router.put("/:id", (req, res) => {
+    Post.update(
+        {
+            title: req.body.title,
+            content: req.body.content,
+        },
+        {
+            where: {
+                id: req.params.id,
+            },
+        }).then((dbPostData) => {
+            if (!dbPostData) {
+                res.status(404).json({ message: "NoPost found matching this id" });
+                return;
+            }
+            res.json(dbPostData);
+        }).catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+
+//Route to upvote/like a post
+router.put()
