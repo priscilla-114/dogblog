@@ -109,7 +109,7 @@ router.post("/logout", (req, res) => {
 router.delete("/:id", (req, res) => {
     Users.destroy({
         where: {
-            id: req.params.id;
+            id: req.params.id,
         },
     }).then((userInfo) => {
         if (!userInfo) {
