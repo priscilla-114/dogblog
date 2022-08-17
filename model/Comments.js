@@ -3,11 +3,11 @@ const { Model, DataTypes } = require("sequelize");
 const sequelize = require('../config/connection');
 
 //Make Comment class and Create Schema for Comments
-class Comment extends Model {}
+class Comments extends Model {}
 
 //Blueprint for the Comments table including all elements for comments
 //Pulling User and Post id to link with the Comments Table
-Comment.init(
+Comments.init(
     {
         id: {
             type: DataTypes.INTEGER,

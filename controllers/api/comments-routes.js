@@ -4,7 +4,7 @@ const { Comments, Users } = require("../../model");
 
 //get request to find all comments
 router.get("/", (req, res) => {
-    Comment.findAll({
+    Comments.findAll({
         include: {
             model: Users,
             attributes: ["username"],
@@ -19,7 +19,7 @@ router.get("/", (req, res) => {
 //post route to create a comment
 router.post("/", (req, res) => {
     if (req.session) {
-        Comment.create({
+        Comments.create({
             comment_text: req.body.comment_text,
             user_id: req.session.user_id,
             post_id: req.session.post_id,
@@ -33,7 +33,7 @@ router.post("/", (req, res) => {
 
 //route used to delete a comment
 router.delete("/:id", (req, res) => {
-    Comment.destroy({
+    Comments.destroy({
         where: {
             id: req.params.id,
         },

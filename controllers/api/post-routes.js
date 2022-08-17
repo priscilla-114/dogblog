@@ -91,4 +91,35 @@ router.put("/:id", (req, res) => {
 });
 
 //Route to upvote/like a post
-router.put()
+router.put("/like", (req, res) => {
+    Post.upvote(
+        {...req.body, user_id: req.session.user_id },
+        {Likes, Comments, Users }
+    ).then((updatedVoteData) => res.json(updatedVoteData))
+    .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
+//Route to delete a specific post by id
+router.delete("/:id", (req, res) => {
+    console.log("id", req.params.id);
+    Post.destroy({
+        where: {
+            id: req.params.id,
+        },
+    }).then((dbPostData) => {
+        if (!dbPostData) {
+            res.status(404).json({ message: "No post found matching this id" });
+            return;
+        }
+        res.json(dbPostData);
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
+//exporting router file
+module.exports= router;
