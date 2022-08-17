@@ -77,3 +77,15 @@ async function loginFormHandler(event) {
   
   document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
 
+  router.get('/login', (req,res)=> {
+
+    if (req.session.loggedIn){
+
+        res.direct('/');
+
+        return;
+    }
+
+    res.render('login');
+  })
+

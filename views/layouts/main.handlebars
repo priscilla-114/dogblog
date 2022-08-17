@@ -2,14 +2,31 @@
 
     <h1>
 
-        <a href ="/">DogBlog</a>
+        <a href ="/">WalkieBloggie</a>
     </h1>
 
     <nav>
 
+        {{#if loggedIn}}
+
+        <button id="logout" class="'btn-no-style">logout</button>
+
+        {{else}}
+
         <a href="/login">login</a>
 
-        <a href="/signup">signup</a>
+        {{/if}}
 
     </nav>
 </header>
+
+<body>
+
+
+
+    {{#if loggedIn}}
+    <script src="/public/javascript/logout.js"></script>
+
+    {{/if}}
+    
+</body>
