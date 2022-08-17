@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/priscilla-114/dogblog/issues"
   },
-  "homepage": "https://github.com/priscilla-114/dogblog#readme"
+  "homepage": "https://github.com/priscilla-114/dogblog#readme",
+  "dependencies": {
+    "handlebars": "^4.7.7",
+    "sequelize": "^6.21.3"
+  }
 }
