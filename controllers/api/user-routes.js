@@ -30,12 +30,35 @@ router.get("/:id", (req, res) => {
                 model: Comment,
                 attributes: ["id", "comment_text", "post_id"],
             },
+            {
+                model: Likes,
+                attributes: ["id"],
+            },
         ]
     }).then((userInfo) => {
         if (!userInfo) {
             res.status(404).json({ message: "No user found matching this id" });
         }
         res.json(userInfo);
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
+router.post("/", (req, res) => {
+    Users.create({
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password,
+    }).then((dbUserData) => {
+        req.session.save(() => {
+            req.sessions.user_id = dbUserData.id;
+            req.sessions.username = dbUserData.username;
+            req.session.loggedIn = true;
+
+            res.json(dbUserData);
+        });
     }).catch((err) => {
         console.log(err);
         res.status(500).json(err);
