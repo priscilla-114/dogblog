@@ -39,5 +39,6 @@ const commentdata = [
     },
 ];
 
+//Seeding the data into the corresponding model
 const seedComments = () => Comments.bulkCreate(commentdata);
 module.exports = seedComments;

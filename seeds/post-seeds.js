@@ -39,5 +39,6 @@ const postdata = [
     },
 ];
 
+//Seeding the data into the corresponding model
 const seedPosts = () => Post.bulkCreate(postdata);
 module.exports = seedPosts;
