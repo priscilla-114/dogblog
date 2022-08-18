@@ -3,7 +3,7 @@ require('dotenv').config();
 
 const express = require('express');
 
-const routes = require('./controllers');
+const routes = require('./controllers/index');
 const sequelize = require('./config/connection');
 
 const exphbs = require('express-handlebars');
