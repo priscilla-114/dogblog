@@ -1,4 +1,5 @@
 //install dependencies
+/* likes will require sessions for login, front end is not set up yet
 const router = require("express").Router();
 const { Likes, Users } = require("../../model");
 
@@ -50,3 +51,4 @@ router.delete("/:id", (req, res) => {
 
 //exporting the file
 module.exports= router;
+*/
