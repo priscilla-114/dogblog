@@ -16,13 +16,32 @@ router.get("/", (req, res) => {
     });
 });
 
+
+//Finding One specific post
+router.get("/:id", (req, res) => {
+    Comments.findOne({
+        where: { id: req.params.id },
+        attributes: ["id", "comment_text", "user_id", "post_id"],
+       
+    }).then((dbPostData) => {
+        if (!dbPostData) {
+            res.status(404).json({ message: "No post found matching this id" });
+            return;
+        }
+        res.json(dbPostData)
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
 //post route to create a comment
 router.post("/", (req, res) => {
     if (req.session) {
         Comments.create({
             comment_text: req.body.comment_text,
-            user_id: req.session.user_id,
-            post_id: req.session.post_id,
+            user_id: req.body.user_id,
+            post_id: req.body.post_id,
         }).then((dbCommentData) => res.json(dbCommentData))
         .catch((err) => {
             console.log(err);
