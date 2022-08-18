@@ -59,7 +59,7 @@ router.post("/", (req, res) => {
     Post.create({
         title: req.body.title,
         content: req.body.content,
-        user_id: req.session.user_id,
+        user_id: req.body.user_id,
     }).then((dbPostData) => res.json(dbPostData))
     .catch((err) => {
         console.log(err);
@@ -93,7 +93,7 @@ router.put("/:id", (req, res) => {
 //Route to upvote/like a post
 router.put("/like", (req, res) => {
     Post.upvote(
-        {...req.body, user_id: req.session.user_id },
+        {...req.body, user_id: req.body.user_id },
         {Likes, Comments, Users }
     ).then((updatedVoteData) => res.json(updatedVoteData))
     .catch((err) => {

@@ -52,15 +52,8 @@ router.post("/", (req, res) => {
         username: req.body.username,
         email: req.body.email,
         password: req.body.password,
-    }).then((dbUserData) => {
-        req.session.save(() => {
-            req.sessions.user_id = dbUserData.id;
-            req.sessions.username = dbUserData.username;
-            req.session.loggedIn = true;
-
-            res.json(dbUserData);
-        });
-    }).catch((err) => {
+    }).then((dbPostData) => res.json(dbPostData))
+    .catch((err) => {
         console.log(err);
         res.status(500).json(err);
     });
