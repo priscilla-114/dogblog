@@ -1,10 +1,11 @@
 //install dependencies
+/* likes will require sessions for login, front end is not set up yet
 const router = require("express").Router();
-const { Comments, Users } = require("../../model");
+const { Likes, Users } = require("../../model");
 
 //get request to find all comments
 router.get("/", (req, res) => {
-    Comments.findAll({
+    Likes.findAll({
         include: {
             model: Users,
             attributes: ["username"],
@@ -19,10 +20,9 @@ router.get("/", (req, res) => {
 //post route to create a comment
 router.post("/", (req, res) => {
     if (req.session) {
-        Comments.create({
-            comment_text: req.body.comment_text,
-            user_id: req.session.user_id,
-            post_id: req.session.post_id,
+        Likes.create({
+            user_id: req.body.user_id,
+            post_id: req.body.post_id,
         }).then((dbCommentData) => res.json(dbCommentData))
         .catch((err) => {
             console.log(err);
@@ -33,13 +33,13 @@ router.post("/", (req, res) => {
 
 //route used to delete a comment
 router.delete("/:id", (req, res) => {
-    Comments.destroy({
+    Likes.destroy({
         where: {
             id: req.params.id,
         },
     }).then((dbCommentData) => {
         if (!dbCommentData) {
-            res.status(404).json({ message: "No comment found matching this id" });
+            res.status(404).json({ message: "No like found matching this id" });
             return;
         }
         res.json(dbCommentData);
@@ -51,6 +51,4 @@ router.delete("/:id", (req, res) => {
 
 //exporting the file
 module.exports= router;
-
-
-
+*/
