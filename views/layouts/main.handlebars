@@ -6,51 +6,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WalkieBloggie</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
+
 </head>
 
-
 <body>
-    <div class="wrapper">
+  <div class="wrapper">
+      <header class="hero">
+          <div>
 
-<header>
+             <nav>
+                {{#if loggedIn}}
+                <a href="/dashboard">dashboard</a>
+                <button id="logout" class="btn-no-style">logout</button>
+                {{else}}
+                <a href="/login">login</a>
+                {{/if}}
+              </nav>
+           
+          </div>
 
-    <h1>
+          <h1 class="app-title"><i class="fab "></i>DogBlog</h1>
+      </header>
 
-        <a href ="/">WalkieBloggie</a>
-    </h1>
-
-    <nav>
-
-        {{#if loggedIn}}
-
-        <a href="/views/dashboard.handlebars">dashboard</a>
-
-        <button id="logout" class="'btn-no-style">logout</button>
-
-        {{else}}
-
-        <a href="/login">login</a>
-
-        {{/if}}
-
-    </nav>
-</header>
-
-<main>
-
-    {{{body}}}
-
-</main>
-
-<footer>
-
-</footer>
-
-</div>
+    <main>
+      {{{ body }}}
+    </main>
+  </div>
 
     {{#if loggedIn}}
-    <script src="/public/javascript/logout.js"></script>
-
+    <script src="/javascript/logout.js"></script>
     {{/if}}
 
 </body>
+
+</html>

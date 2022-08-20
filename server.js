@@ -3,13 +3,15 @@ require('dotenv').config();
 
 const express = require('express');
 
+const helpers = require('./utilities/helpers')
+
 const routes = require('./controllers/index');
 const sequelize = require('./config/connection');
 
 const exphbs = require('express-handlebars');
 const handlebars = require('handlebars');
 
-const hbs = exphbs.create({});
+const hbs = exphbs.create({ helpers });
 const app = express();
 
 const PORT = process.env.PORT || 3001;
@@ -27,15 +29,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Router to api folder
 app.use(require('./controllers/'));
 
-//TODO: Uncomment section below once seeds and models are complete
+//TODO: Uncomment section below once seeds and model are complete
 sequelize.sync({ force: false }).then(() => {
 	app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
 });
-=======
-const exphbs = require('express-handlebars');
-
-const hbs = exphbs.create({helpers});
-
 
 app.engine('handlebars', hbs.engine);
 
@@ -57,6 +54,5 @@ const sess = {
 
 app.use(session(sess));
 
-const helpers = require('./utilities/helpers');
 
 

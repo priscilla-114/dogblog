@@ -1,6 +1,7 @@
 //install dependencies
 const router = require("express").Router();
 const { Comments, Users } = require("../../model");
+const withAuth = require('../../utilities/auth');
 
 //get request to find all comments
 router.get("/", (req, res) => {
@@ -69,7 +70,7 @@ router.delete("/:id", (req, res) => {
 });
 
 //exporting the file
-module.exports= router;
+module.exports = router;
 
 
 
